@@ -44,8 +44,9 @@ cacheSolve <- function(m) {
       #If this is a first time for the inv then calculate 
       #and cache it
       #Return it as a new cacheable matrix obeject
+      m <<- m
       cache_m <- solve(m)
-      attr(cache_m,"cached_inv") <- cache_m
+      attr(m,"cached_inv") <<- cache_m
       message("Returning NEW non-cached value")
       return(cache_m)
     }
