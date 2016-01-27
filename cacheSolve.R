@@ -25,17 +25,27 @@ cache_m <- NULL
 #################################################################
 
 cacheSolve <- function(m) {
-    #If cache is not null then return inverse
-    if ( !is.na(attr(m,"cached_inv"))) {
+    #If cache value is available, and the matrix has not
+    #been modified then return the cached matirx
+    #solve(m) %*% m == diag(nrow = nrow(m), ncol = ncol(m))
+    #attr(m,"cached_inv") %*% m will provide the identity matrix
+    #if the matrix m has been changed or this is the first time
+    #diag(nrow = nrow(m), ncol = ncol(m)) provides what the identity matrix
+    #should be, when compared together and if true then the cached matrix
+    #may be provided.
+    #
+    if ( !is.na(attr(m,"cached_inv")[1,1])) {
+    #if( (attr(m,"cached_inv") %*% m) == diag(nrow = nrow(m), ncol = ncol(m))) {
       message("Returning cached value")
       return(attr(m,"cached_inv"))
     }
       else
-    {
+    { 
       #If this is a first time for the inv then calculate 
       #and cache it
+      #Return it as a new cacheable matrix obeject
       cache_m <- solve(m)
-      attr(cache_m,"cached_inv") <- inv
+      attr(cache_m,"cached_inv") <- cache_m
       message("Returning NEW non-cached value")
       return(cache_m)
     }
