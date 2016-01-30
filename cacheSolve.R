@@ -36,7 +36,7 @@ cacheSolve <- function(m) {
     #
     if ( !is.na(attr(m,"cached_inv")[1,1])) {
     #if( (attr(m,"cached_inv") %*% m) == diag(nrow = nrow(m), ncol = ncol(m))) {
-      message("Returning cached value")
+      message("Returning cached values")
       return(attr(m,"cached_inv"))
     }
       else
@@ -47,7 +47,7 @@ cacheSolve <- function(m) {
       m <<- m
       cache_m <- solve(m)
       attr(m,"cached_inv") <<- cache_m
-      message("Returning NEW non-cached value")
+      message("Returning NEW (non-cached) values")
       return(cache_m)
     }
     
