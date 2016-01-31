@@ -21,16 +21,15 @@
 # i.e it's own GC.
 #################################################################
 
+
 makeCacheMatrix <- function(...) {
     #First Create a typical matrix, to be returned
     m <- matrix(...)
   
-    #Add a cached matrix attribute
+    #Add a cached matrix identity
     attr(m,"cached_inv") <- matrix()
     
-    mm <<- m
-#    return(m)
-    return(mm)
+    return(m)
 }
 
 
