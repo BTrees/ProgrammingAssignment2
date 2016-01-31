@@ -12,8 +12,11 @@
 # Arguments: 
 #        All arguments used by the function matrix() may
 #        Be used in the exact same way.
+#
 # Return:
-#        Returns a special matrix that can casche it's own inverse
+#        Returns a special matrix that can cache it's own inverse
+# 
+# cacheMatrixList - is the global list of cacheMatrix matrix objects
 #
 # Note: In practice there should be a means to perform cleanup
 # of any objects created and used in this and its companion function
@@ -21,6 +24,7 @@
 # i.e it's own GC.
 #################################################################
 
+cacheMatrixList <- list()
 
 makeCacheMatrix <- function(...) {
     #First Create a typical matrix, to be returned
