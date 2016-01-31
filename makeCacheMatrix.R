@@ -21,7 +21,7 @@
 # Note: In practice there should be a means to perform cleanup
 # of any objects created and used in this and its companion function
 # cacheSolve(), once no longer needed.
-# i.e it's own GC.
+# i.e it's own GC. 
 #################################################################
 
 cacheMatrixList <- list()
