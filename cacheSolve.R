@@ -5,7 +5,7 @@ cache_m <- NULL
 
 #################################################################
 #
-# Function: cachemean
+# Function: cacheSolve
 # Author: Bill Woods
 # Date: Sun 24, 2016
 #
@@ -25,7 +25,8 @@ cache_m <- NULL
 
 cacheSolve <- function(m) {
 
-      if ( !is.null(cacheMatrixList[attr(m,"cache_list_id")])) {
+      #If special matrix attribute is not null, return cache value
+      if ( !is.null(attr(m,"cached_inv"))) {
       message("Returning cached values")
       return(attr(m,"cached_inv"))
     }
@@ -38,9 +39,9 @@ cacheSolve <- function(m) {
       #Add the inverse matrix within the matrix as an attribute
       attr(m,"cached_inv") <- cache_m
       #Since this is the first time, id# will be current list length + 1
-      attr(m,"cache_list_id") <- length(cacheMatrixList) + 1
+      #attr(m,"cache_list_id") <- length(cacheMatrixList) + 1
       #Add this matrix to list
-      cacheMatrixList[attr(m,"cache_list_id")] <<- cache_m
+      #cacheMatrixList[attr(m,"cache_list_id")] <<- cache_m
       message("Returning NEW (non-cached) values")
       return(cache_m)
     }

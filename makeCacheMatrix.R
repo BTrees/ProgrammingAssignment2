@@ -1,6 +1,6 @@
 #################################################################
 #
-# Function: cachedMatrix
+# Function: makeCacheMatrix
 # Author: Bill Woods
 # Date: Sun 24, 2016
 #
@@ -11,27 +11,21 @@
 #
 # Arguments: 
 #        All arguments used by the function matrix() may
-#        Be used in the exact same way.
+#        Be used in the exact same way as a typical matrix.
 #
 # Return:
 #        Returns a special matrix that can cache it's own inverse
 # 
-# cacheMatrixList - is the global list of cacheMatrix matrix objects
-#
-# Note: In practice there should be a means to perform cleanup
-# of any objects created and used in this and its companion function
-# cacheSolve(), once no longer needed.
-# i.e it's own GC. 
 #################################################################
 
-cacheMatrixList <- list()
+################### cacheMatrixList <- list()
 
 makeCacheMatrix <- function(...) {
     #First Create a typical matrix, to be returned
     m <- matrix(...)  
   
-    #Add a cached matrix identity
-    attr(m,"cached_inv") <- matrix()
+    #Set cached inverted value to NULL initially
+    attr(m,"cached_inv") <- NULL
     
     return(m)
 }
