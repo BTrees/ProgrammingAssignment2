@@ -24,7 +24,7 @@
 
 makeCacheMatrix <- function(...) {
     #First Create a typical matrix, to be returned
-    m <- matrix(...)
+    m <- matrix(...)  
   
     #Add a cached matrix identity
     attr(m,"cached_inv") <- matrix()
