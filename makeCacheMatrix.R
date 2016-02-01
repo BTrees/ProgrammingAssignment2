@@ -18,11 +18,10 @@
 # 
 #################################################################
 
-################### cacheMatrixList <- list()
 
 makeCacheMatrix <- function(...) {
     #First Create a typical matrix, to be returned
-    m <<- matrix(...)  
+    m <- matrix(...)  
     #Set cached inverted value to NULL initially
     attr(m,"cached_inverse") <- matrix()
     

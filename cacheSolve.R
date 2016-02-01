@@ -23,10 +23,12 @@ cache_m <- NULL
 #
 #################################################################
 
+
+
 cacheSolve <- function(m) {
 
-    #If special matrix attribute ;1,1] is not null, return cache value
-    if ( !is.null(attr(m,"cached_inverse")[1,1])) {
+    #If special matrix attribute ;1,1] is not NA, return cache value
+    if ( !is.na(attr(m,"cached_inverse")[1,1]) ) {
       message("Returning cached values")
       return(attr(m,"cached_inverse"))
     }
@@ -39,9 +41,9 @@ cacheSolve <- function(m) {
       
       #Add the inverse matrix within the matrix as an attribute
       attr(m,"cached_inverse") <- cache_m
-
+      
       message("Returning NEW (non-cached) values")
-      return(attr(m,"cached_inverse"))
+      return(cache_m)
     }
     
 }
