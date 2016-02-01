@@ -25,26 +25,24 @@ cache_m <- NULL
 
 cacheSolve <- function(m) {
 
-      #If special matrix attribute is not null, return cache value
-      if ( !is.null(attr(m,"cached_inv"))) {
+    #If special matrix attribute ;1,1] is not null, return cache value
+    if ( !is.null(attr(m,"cached_inverse")[1,1])) {
       message("Returning cached values")
-      return(attr(m,"cached_inv"))
+      return(attr(m,"cached_inverse"))
     }
       else
     { 
-      #If this is a first time for the inv then calculate 
-      #and cache it in the cache list
+      #If here, then this is a first time for the inv then calculate 
+      #and cache it in the cache attribute
       #Return the matrix as a new cacheable object
       cache_m <- solve(m)
+      
       #Add the inverse matrix within the matrix as an attribute
-      attr(m,"cached_inv") <- cache_m
-      #Since this is the first time, id# will be current list length + 1
-      #attr(m,"cache_list_id") <- length(cacheMatrixList) + 1
-      #Add this matrix to list
-      #cacheMatrixList[attr(m,"cache_list_id")] <<- cache_m
+      attr(m,"cached_inverse") <- cache_m
+
       message("Returning NEW (non-cached) values")
-      return(cache_m)
+      return(attr(m,"cached_inverse"))
     }
     
-
 }
+

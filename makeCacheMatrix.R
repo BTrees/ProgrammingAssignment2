@@ -14,7 +14,7 @@
 #        Be used in the exact same way as a typical matrix.
 #
 # Return:
-#        Returns a special matrix that can cache it's own inverse
+#        Returns a special matrix 'm' that can cache it's own inverse
 # 
 #################################################################
 
@@ -22,10 +22,9 @@
 
 makeCacheMatrix <- function(...) {
     #First Create a typical matrix, to be returned
-    m <- matrix(...)  
-  
+    m <<- matrix(...)  
     #Set cached inverted value to NULL initially
-    attr(m,"cached_inv") <- NULL
+    attr(m,"cached_inverse") <- matrix()
     
     return(m)
 }
